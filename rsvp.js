@@ -19,13 +19,13 @@
 
   var MESSAGES = {
     Yes: {
-      icon:  "🥂",                 // clinking glasses
+      icon:  "#i-flutes",
       title: "You're in!",
       body:  "Can't wait to celebrate with you.",
       meta:  "See you October 2"
     },
     No: {
-      icon:  "🤍",                 // white heart
+      icon:  "#i-heart",
       title: "Thank you for letting me know",
       body:  "You'll be missed!",
       meta:  ""
@@ -35,7 +35,8 @@
   function show(answer) {
     var msg = MESSAGES[answer] || MESSAGES.No;
 
-    document.getElementById("confirmation-icon").textContent  = msg.icon;
+    document.getElementById("confirmation-icon")
+      .querySelector("use").setAttribute("href", msg.icon);
     document.getElementById("confirmation-title").textContent = msg.title;
     document.getElementById("confirmation-body").textContent  = msg.body;
 
@@ -45,11 +46,6 @@
 
     rsvpEl.hidden = true;
     panel.hidden = false;
-
-    // The confirmation carries its own closing line, so the standing
-    // page footer would only repeat it.
-    var footer = document.querySelector(".footer");
-    if (footer) footer.hidden = true;
 
     panel.focus();
   }

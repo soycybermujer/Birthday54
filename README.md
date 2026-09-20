@@ -13,10 +13,25 @@ Static HTML, CSS and a little vanilla JavaScript. Submissions go to **Netlify Fo
 | `rsvp.js` | Submits the form in the background so we can show our own confirmation |
 | `thank-you.html` | Fallback confirmation, only used if JavaScript is unavailable |
 | `netlify.toml` | Tells Netlify to publish the folder as-is; adds caching and security headers |
-| `assets/fonts/` | Cormorant Garamond + Pinyon Script (self-hosted, SIL OFL 1.1) |
+| `assets/hero-760.jpg`, `assets/hero-1400.jpg` | The invitation photograph with its lettering removed, used as the page background |
+| `assets/preview.jpg` | The WhatsApp link thumbnail (the invitation itself, lettering and all) |
+| `assets/fonts/` | Cormorant Garamond, Kaushan Script, Sacramento (self-hosted, SIL OFL 1.1) |
 | `.gitignore` | Keeps OS junk out of the repository |
 
-First load is about **97 KB** across five requests.
+First load is about **161 KB** on a phone. Nothing is fetched from another domain.
+
+## How it matches the invitation
+
+Colours were sampled from the invitation file: its black is `#0A0605`, its gold
+`#E6B46A`, its lettering `#FBF1DC`. The three scripts were matched by rendering
+candidates side by side against it, which landed on Kaushan Script for "54th"
+and Sacramento for "Let's Gather". The calendar, clock, flutes and heart are
+drawn as inline SVG to match the invitation's gold line icons.
+
+The background is the invitation's own photograph. Because the original has the
+lettering baked into it, the type was masked out and the gaps filled in from the
+surrounding image, leaving the candles, the bokeh and the toast intact. No faces
+are recognisable, exactly as in the original.
 
 ## How the RSVP works
 
@@ -87,11 +102,13 @@ notification.** Send it to your own address so you do not have to keep checking.
 
 ## Optional touches
 
-- **Photo background.** Drop an image at `assets/hero.jpg` and uncomment the
-  `background-image` block inside `.atmosphere` in `styles.css`. The vignette and
-  text stay legible on top of it.
-- **WhatsApp link preview.** Add a 1200×630 image at `assets/preview.jpg` and
-  uncomment the two `og:image` lines near the top of `index.html`.
+- **A different photo.** Replace `assets/hero-760.jpg` and `assets/hero-1400.jpg`
+  and nothing else changes. If the new photo is brighter, deepen the scrim in the
+  `.vignette` rule in `styles.css`.
+- **Emoji instead of the line icons.** The RSVP choices use the invitation's gold
+  champagne and heart icons. To go back to 🥂 and 🤍, replace each
+  `<svg class="choice__icon">…</svg>` in `index.html` with
+  `<span class="choice__icon">🥂</span>`.
 
 ## Editing the details
 

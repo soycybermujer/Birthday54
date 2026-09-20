@@ -3,44 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Erika's 54th Birthday · October 2</title>
+<title>Erika's 54th Birthday &middot; October 2</title>
 <meta name="description" content="Good food, good friends, good stories. Friday, October 2 at 7:30 P.M. Let's gather.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0B0705">
+<meta name="theme-color" content="#0A0605">
 
 <!-- WhatsApp / link preview -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Erika's 54th Birthday">
-<meta property="og:description" content="Good food · Good friends · Good stories. Friday, October 2 · 7:30 P.M. Let's gather.">
-<!-- Optional: add assets/preview.jpg (1200x630) and uncomment the two lines below for a WhatsApp thumbnail.
-<meta property="og:image" content="/assets/preview.jpg">
+<meta property="og:description" content="Good food &middot; Good friends &middot; Good stories. Friday, October 2 &middot; 7:30 P.M. Let's gather.">
+<meta property="og:image" content="assets/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Erika's 54th Birthday invitation">
--->
+<meta name="twitter:card" content="summary_large_image">
 
+<link rel="preload" href="assets/hero-760.jpg" as="image" media="(max-width: 47.99em)">
+<link rel="preload" href="assets/hero-1400.jpg" as="image" media="(min-width: 48em)">
 <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/pinyon-script-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/cormorant-garamond-italic-subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/kaushan-script-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/sacramento-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- Candlelight + bokeh atmosphere, drawn in CSS (no image requests) -->
-<div class="atmosphere" aria-hidden="true">
-  <span class="glow glow--a"></span>
-  <span class="glow glow--b"></span>
-  <span class="glow glow--c"></span>
-  <span class="bokeh bokeh--1"></span>
-  <span class="bokeh bokeh--2"></span>
-  <span class="bokeh bokeh--3"></span>
-  <span class="bokeh bokeh--4"></span>
-  <span class="bokeh bokeh--5"></span>
-  <span class="bokeh bokeh--6"></span>
-  <span class="silhouettes"></span>
-  <span class="vignette"></span>
-</div>
+<!-- Gold line icons, matching the invitation's icon set -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <g id="i-calendar">
+      <rect x="3.2" y="5.2" width="17.6" height="15.6" rx="2"/>
+      <path d="M3.2 10.2h17.6M8 3.2v4M16 3.2v4"/>
+      <path d="M8 13.8h.01M12 13.8h.01M16 13.8h.01M8 17.2h.01M12 17.2h.01M16 17.2h.01" stroke-width="2.1"/>
+    </g>
+    <g id="i-clock">
+      <circle cx="12" cy="12" r="8.8"/>
+      <path d="M12 6.6V12l3.6 2.6"/>
+    </g>
+    <!-- Two flutes, each pivoted about its own foot and set apart, so the
+         rims meet at the centre instead of overlapping into a blur. -->
+    <g id="i-flutes">
+      <g transform="translate(-5 0) rotate(12 12 18.4)">
+        <path d="M9.6 5.4h4.8l-.85 5.4a1.55 1.55 0 0 1-3.1 0Z"/>
+        <path d="M12 12.4v5.5M10.4 18.4h3.2"/>
+      </g>
+      <g transform="translate(5 0) rotate(-12 12 18.4)">
+        <path d="M9.6 5.4h4.8l-.85 5.4a1.55 1.55 0 0 1-3.1 0Z"/>
+        <path d="M12 12.4v5.5M10.4 18.4h3.2"/>
+      </g>
+      <path d="M12 3.6V2.1M9.4 4.3 8.7 3.1M14.6 4.3l.7-1.2"/>
+    </g>
+    <g id="i-heart">
+      <path d="M12 20.2C6.4 16.3 3.4 12.9 3.4 9.5c0-3 2.2-5 4.7-5 1.8 0 3.2 1 3.9 2.5.7-1.5 2.1-2.5 3.9-2.5 2.5 0 4.7 2 4.7 5 0 3.4-3 6.8-8.6 10.7Z"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- The invitation photograph, with its lettering removed, plus a scrim -->
+<div class="atmosphere" aria-hidden="true"><span class="vignette"></span></div>
 
 <main class="page">
 
-  <p class="eyebrow">Good&nbsp;Food&nbsp;· Good&nbsp;Friends&nbsp;· Good&nbsp;Stories</p>
+  <p class="eyebrow">
+    <span>Good Food</span>
+    <span>Good Friends</span>
+    <span>Good Stories</span>
+  </p>
+  <hr class="rule rule--short">
 
   <h1 class="title">
     <span class="title__line">Erika's</span>
@@ -50,16 +79,31 @@
 
   <p class="gather">
     <span class="gather__script">Let's Gather</span>
-    <span class="gather__sub">Just Us Girls <span class="heart">&#9825;</span></span>
+    <span class="gather__sub">Just Us Girls</span>
   </p>
 
-  <hr class="rule">
+  <div class="heart-rule" aria-hidden="true">
+    <span class="heart-rule__line"></span>
+    <svg class="heart-rule__heart" viewBox="0 0 24 24"><use href="#i-heart"/></svg>
+    <span class="heart-rule__line"></span>
+  </div>
 
-  <section class="when" aria-label="Event details">
-    <p class="when__date">Friday&nbsp;· October&nbsp;2</p>
-    <p class="when__time">7:30 P.M.</p>
-    <p class="when__menu">Arepas&nbsp;· Drinks&nbsp;· Friends&nbsp;· Good&nbsp;Stories</p>
+  <section class="details" aria-label="Event details">
+    <div class="detail">
+      <svg class="detail__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-calendar"/></svg>
+      <p class="detail__text">Friday<span>October 2</span></p>
+    </div>
+    <div class="detail">
+      <svg class="detail__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>
+      <p class="detail__text">7:30 P.M.</p>
+    </div>
+    <div class="detail">
+      <svg class="detail__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-flutes"/></svg>
+      <p class="detail__text">Arepas &middot; Drinks<span>Friends &middot; Good Stories</span></p>
+    </div>
   </section>
+
+  <p class="closing">Same Great People<span>New Chapter</span></p>
 
   <hr class="rule">
 
@@ -101,7 +145,7 @@
         <label class="choice">
           <input type="radio" name="rsvp" value="Yes" required>
           <span class="choice__inner">
-            <span class="choice__icon" aria-hidden="true">&#129346;</span>
+            <svg class="choice__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-flutes"/></svg>
             <span class="choice__text">Yes, I'll be there</span>
             <span class="choice__mark" aria-hidden="true"></span>
           </span>
@@ -110,7 +154,7 @@
         <label class="choice">
           <input type="radio" name="rsvp" value="No">
           <span class="choice__inner">
-            <span class="choice__icon" aria-hidden="true">&#129293;</span>
+            <svg class="choice__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart"/></svg>
             <span class="choice__text">Sorry, I'll miss it</span>
             <span class="choice__mark" aria-hidden="true"></span>
           </span>
@@ -125,13 +169,11 @@
 
   <!-- ============ Confirmation state (replaces the form after submit) ============ -->
   <section class="confirmation" id="confirmation" hidden tabindex="-1" aria-live="polite">
-    <p class="confirmation__icon" id="confirmation-icon" aria-hidden="true"></p>
+    <svg class="confirmation__icon" id="confirmation-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-flutes"/></svg>
     <h2 class="confirmation__title" id="confirmation-title"></h2>
     <p class="confirmation__body" id="confirmation-body"></p>
     <p class="confirmation__meta" id="confirmation-meta"></p>
   </section>
-
-  <p class="footer">See you soon <span class="heart">&#9825;</span></p>
 
 </main>
 
