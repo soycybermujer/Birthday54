@@ -305,22 +305,6 @@ body {
     transform: none;
     background: linear-gradient(180deg, transparent, rgba(230,180,106,0.55), transparent);
   }
-  /* The location sits on its own full-width row under the three columns,
-     so the invitation keeps its original three-part structure. */
-  .detail--where {
-    grid-column: 1 / -1;
-    margin-top: 1.3rem;
-    padding-top: 1.3rem;
-  }
-  .detail + .detail--where::before {
-    top: 0;
-    bottom: auto;
-    left: 50%;
-    width: 5rem;
-    height: 1px;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, rgba(230,180,106,0.5), transparent);
-  }
   .detail__text { font-size: 0.72rem; letter-spacing: 0.16em; }
 }
 
