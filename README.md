@@ -90,6 +90,22 @@ Netlify does not enable Forms automatically on newer sites.
 If the test does not appear, it is almost always step 3 — enable detection, then
 deploy again.
 
+## If an RSVP fails to send
+
+The page names the cause on a second line under the warm message. Match it here:
+
+| What the second line says | What it means | Fix |
+|---|---|---|
+| `This page has to be published before it can send anything (opened as file:)` | The HTML was opened straight from disk by double-clicking it. There is no server to receive anything. | Deploy it, then use the `.netlify.app` address. |
+| `The host has no form registered here yet (404)` | The site is live but Netlify has not registered the form. | Site configuration → Forms → **Enable form detection**, then **trigger a new deploy**. Netlify only scans for forms during a build. |
+| `The host refused the submission (HTTP 500)` and similar | The site is live and the form exists, but the host errored. | Retry; if it persists, check the Netlify deploy log. |
+| `Could not reach the server` / `Your device looks offline` | Network problem on the guest's side. | Retry on a better connection. |
+
+Local preview, if you want one before deploying: from the project folder run
+`npx serve .` (or `python3 -m http.server 8000`) and open the address it prints.
+The invitation renders correctly that way, but the RSVP itself will report a 404,
+because only Netlify handles the form.
+
 ### Optional: get notified of each RSVP
 
 **Site configuration → Forms → Form notifications → Add notification → Email

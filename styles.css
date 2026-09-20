@@ -477,6 +477,13 @@ body {
   font-size: 0.95rem;
   color: #F0B79A;
 }
+.form-error__detail {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
 
 /* -----------------------------------------------------------
    Confirmation
