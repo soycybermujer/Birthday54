@@ -24,12 +24,17 @@
       icon:  "#i-flutes",
       title: "You're in!",
       body:  "Can't wait to celebrate with you.",
+      // City only. The street address goes out privately, to guests who said yes.
+      place: "Doral, Florida",
+      note:  "I'll send you the exact address by WhatsApp.",
       meta:  "See you October 2"
     },
     No: {
       icon:  "#i-heart",
       title: "Thank you for letting me know",
       body:  "You'll be missed!",
+      place: "",
+      note:  "",
       meta:  ""
     }
   };
@@ -41,6 +46,11 @@
       .querySelector("use").setAttribute("href", msg.icon);
     document.getElementById("confirmation-title").textContent = msg.title;
     document.getElementById("confirmation-body").textContent  = msg.body;
+
+    var where = document.getElementById("confirmation-where");
+    document.getElementById("confirmation-place").textContent = msg.place;
+    document.getElementById("confirmation-note").textContent  = msg.note;
+    where.hidden = !msg.place;
 
     var meta = document.getElementById("confirmation-meta");
     meta.textContent = msg.meta;

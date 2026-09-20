@@ -48,9 +48,15 @@ honeypot catches most spam.
 
 ### Privacy
 
-The home address is nowhere in this repository. Submissions are never displayed on
-the site — there is no guest-list page and no endpoint that reads them back. You are
-the only one who sees them, in your Netlify dashboard.
+The street address is nowhere in this repository. Guests who answer yes are shown
+the city — "Doral, Florida" — and told the exact address will follow by WhatsApp.
+That city string lives in `rsvp.js`, so treat it as public: it is not displayed
+until someone submits, but anyone can read it in the page source. A city is the
+intended level of detail; the address itself never goes near this site.
+
+Submissions are never displayed on the site — there is no guest-list page and no
+endpoint that reads them back. You are the only one who sees them, in your Netlify
+dashboard.
 
 ## Deploying to your existing Netlify account
 
@@ -129,4 +135,7 @@ notification.** Send it to your own address so you do not have to keep checking.
 ## Editing the details
 
 Everything a guest reads is in `index.html`, except the two confirmation messages,
-which are in the `MESSAGES` object at the top of `rsvp.js`.
+which are in the `MESSAGES` object at the top of `rsvp.js`. That object also holds
+the city and the address note shown to guests who say yes — change `place` and
+`note` there, and leave the `No` entry's empty so a guest who declines is not
+told where to go.

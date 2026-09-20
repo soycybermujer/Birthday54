@@ -53,6 +53,10 @@
       </g>
       <path d="M12 3.6V2.1M9.4 4.3 8.7 3.1M14.6 4.3l.7-1.2"/>
     </g>
+    <g id="i-pin">
+      <path d="M12 21.2s6.8-6.1 6.8-10.8a6.8 6.8 0 1 0-13.6 0c0 4.7 6.8 10.8 6.8 10.8Z"/>
+      <circle cx="12" cy="10.2" r="2.5"/>
+    </g>
     <g id="i-heart">
       <path d="M12 20.2C6.4 16.3 3.4 12.9 3.4 9.5c0-3 2.2-5 4.7-5 1.8 0 3.2 1 3.9 2.5.7-1.5 2.1-2.5 3.9-2.5 2.5 0 4.7 2 4.7 5 0 3.4-3 6.8-8.6 10.7Z"/>
     </g>
@@ -175,6 +179,16 @@
     <svg class="confirmation__icon" id="confirmation-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-flutes"/></svg>
     <h2 class="confirmation__title" id="confirmation-title"></h2>
     <p class="confirmation__body" id="confirmation-body"></p>
+
+    <!-- Shown only to guests who said yes. The street address is never here. -->
+    <div class="where" id="confirmation-where" hidden>
+      <p class="where__place">
+        <svg class="where__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
+        <span id="confirmation-place"></span>
+      </p>
+      <p class="where__note" id="confirmation-note"></p>
+    </div>
+
     <p class="confirmation__meta" id="confirmation-meta"></p>
   </section>
 
