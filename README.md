@@ -48,11 +48,12 @@ honeypot catches most spam.
 
 ### Privacy
 
-The street address is nowhere in this repository. Guests who answer yes are shown
-the city — "Doral, Florida" — and told the exact address will follow by WhatsApp.
-That city string lives in `rsvp.js`, so treat it as public: it is not displayed
-until someone submits, but anyone can read it in the page source. A city is the
-intended level of detail; the address itself never goes near this site.
+The street address is nowhere in this repository. The invitation shows the city —
+"Doral, Florida" — alongside the date and time, so guests can plan before they
+answer. Guests who say yes see it again on the confirmation, with a line saying
+the exact address will follow by WhatsApp. Treat the city as public, because it
+is: a city is the intended level of detail, and the address itself never goes
+near this site.
 
 Submissions are never displayed on the site — there is no guest-list page and no
 endpoint that reads them back. You are the only one who sees them, in your Netlify
