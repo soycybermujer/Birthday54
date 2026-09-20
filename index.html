@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Erika's 54th Birthday · October 2</title>
+<meta name="description" content="Good food, good friends, good stories. Friday, October 2 at 7:30 P.M. Let's gather.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0705">
+
+<!-- WhatsApp / link preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Erika's 54th Birthday">
+<meta property="og:description" content="Good food · Good friends · Good stories. Friday, October 2 · 7:30 P.M. Let's gather.">
+<!-- Optional: add assets/preview.jpg (1200x630) and uncomment the two lines below for a WhatsApp thumbnail.
+<meta property="og:image" content="/assets/preview.jpg">
+<meta property="og:image:alt" content="Erika's 54th Birthday invitation">
+-->
+
+<link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/pinyon-script-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Candlelight + bokeh atmosphere, drawn in CSS (no image requests) -->
+<div class="atmosphere" aria-hidden="true">
+  <span class="glow glow--a"></span>
+  <span class="glow glow--b"></span>
+  <span class="glow glow--c"></span>
+  <span class="bokeh bokeh--1"></span>
+  <span class="bokeh bokeh--2"></span>
+  <span class="bokeh bokeh--3"></span>
+  <span class="bokeh bokeh--4"></span>
+  <span class="bokeh bokeh--5"></span>
+  <span class="bokeh bokeh--6"></span>
+  <span class="silhouettes"></span>
+  <span class="vignette"></span>
+</div>
+
+<main class="page">
+
+  <p class="eyebrow">Good&nbsp;Food&nbsp;· Good&nbsp;Friends&nbsp;· Good&nbsp;Stories</p>
+
+  <h1 class="title">
+    <span class="title__line">Erika's</span>
+    <span class="title__script">54<span class="title__ord">th</span></span>
+    <span class="title__line">Birthday</span>
+  </h1>
+
+  <p class="gather">
+    <span class="gather__script">Let's Gather</span>
+    <span class="gather__sub">Just Us Girls <span class="heart">&#9825;</span></span>
+  </p>
+
+  <hr class="rule">
+
+  <section class="when" aria-label="Event details">
+    <p class="when__date">Friday&nbsp;· October&nbsp;2</p>
+    <p class="when__time">7:30 P.M.</p>
+    <p class="when__menu">Arepas&nbsp;· Drinks&nbsp;· Friends&nbsp;· Good&nbsp;Stories</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ RSVP ============ -->
+  <section class="rsvp" id="rsvp" aria-labelledby="rsvp-heading">
+    <h2 class="rsvp__heading" id="rsvp-heading">Will you join me?</h2>
+
+    <form
+      id="rsvp-form"
+      name="rsvp"
+      method="POST"
+      action="/thank-you.html"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+    >
+      <!-- Required by Netlify Forms so the submission is attributed to this form -->
+      <input type="hidden" name="form-name" value="rsvp">
+      <!-- Spam honeypot: hidden from people, tempting to bots -->
+      <p class="hp">
+        <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+      </p>
+
+      <div class="field">
+        <label class="field__label" for="name">Your name</label>
+        <input
+          class="field__input"
+          id="name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+          maxlength="80"
+          placeholder="First and last name">
+      </div>
+
+      <fieldset class="choices">
+        <legend class="choices__legend">Your answer</legend>
+
+        <label class="choice">
+          <input type="radio" name="rsvp" value="Yes" required>
+          <span class="choice__inner">
+            <span class="choice__icon" aria-hidden="true">&#129346;</span>
+            <span class="choice__text">Yes, I'll be there</span>
+            <span class="choice__mark" aria-hidden="true"></span>
+          </span>
+        </label>
+
+        <label class="choice">
+          <input type="radio" name="rsvp" value="No">
+          <span class="choice__inner">
+            <span class="choice__icon" aria-hidden="true">&#129293;</span>
+            <span class="choice__text">Sorry, I'll miss it</span>
+            <span class="choice__mark" aria-hidden="true"></span>
+          </span>
+        </label>
+      </fieldset>
+
+      <button class="submit" type="submit" id="submit-btn">Confirm RSVP</button>
+
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+    </form>
+  </section>
+
+  <!-- ============ Confirmation state (replaces the form after submit) ============ -->
+  <section class="confirmation" id="confirmation" hidden tabindex="-1" aria-live="polite">
+    <p class="confirmation__icon" id="confirmation-icon" aria-hidden="true"></p>
+    <h2 class="confirmation__title" id="confirmation-title"></h2>
+    <p class="confirmation__body" id="confirmation-body"></p>
+    <p class="confirmation__meta" id="confirmation-meta"></p>
+  </section>
+
+  <p class="footer">See you soon <span class="heart">&#9825;</span></p>
+
+</main>
+
+<script src="rsvp.js" defer></script>
+</body>
+</html>

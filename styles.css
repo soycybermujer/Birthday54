@@ -1,0 +1,485 @@
+/* ===========================================================
+   Erika's 54th Birthday — RSVP
+   Mobile-first. Dark, warm, candlelit.
+   Fonts are self-hosted (no third-party requests at all).
+   =========================================================== */
+
+/* Cormorant Garamond — variable weight axis, latin subset. SIL OFL 1.1. */
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("assets/fonts/cormorant-garamond-latin.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+                 U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+                 U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Pinyon Script — script accent, latin subset. SIL OFL 1.1. */
+@font-face {
+  font-family: "Pinyon Script";
+  src: url("assets/fonts/pinyon-script-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+                 U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+                 U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --bg:          #0A0605;   /* near-black espresso */
+  --bg-deep:     #140C07;
+  --espresso:    #241611;
+  --amber:       #C68A45;
+  --amber-soft:  #E0AC6B;
+  --champagne:   #EBD9BC;
+  --ink:         #F2E7D6;
+  --muted:       #A89279;
+  --line:        rgba(198, 138, 69, 0.28);
+
+  --serif:  "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --script: "Pinyon Script", "Snell Roundhand", "Apple Chancery", cursive;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+
+  /* Cormorant defaults to old-style figures, which sit at x-height and
+     read as lowercase next to all-caps lines like "OCTOBER 2". */
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
+}
+
+/* -----------------------------------------------------------
+   Atmosphere: candlelight, bokeh, blurred silhouettes.
+   Purely decorative and pointer-transparent.
+
+   TO USE A PHOTO INSTEAD: add your image at assets/hero.jpg and
+   uncomment the .atmosphere background rule below. Everything
+   else keeps working; the vignette will sit on top of it.
+   ----------------------------------------------------------- */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% 0%,   #2A1810 0%, transparent 60%),
+    radial-gradient(90%  70% at 15% 88%,  #1C0F09 0%, transparent 65%),
+    linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 55%, #070403 100%);
+
+  /* background-image: url("assets/hero.jpg");
+     background-size: cover;
+     background-position: center;  */
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+}
+.glow--a { width: 62vw; height: 62vw; top: -14vw;  left: 18vw;  background: radial-gradient(circle, rgba(214,150,74,0.55), transparent 70%); }
+.glow--b { width: 48vw; height: 48vw; top: 42%;    left: -18vw; background: radial-gradient(circle, rgba(168,96,38,0.42), transparent 70%); }
+.glow--c { width: 54vw; height: 54vw; bottom: -12vw; right: -14vw; background: radial-gradient(circle, rgba(232,186,120,0.30), transparent 70%); }
+
+.bokeh {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 216, 158, 0.85), rgba(214, 150, 74, 0.32) 55%, transparent 72%);
+  filter: blur(6px);
+  animation: drift 18s var(--ease) infinite alternate;
+}
+.bokeh--1 { width: 46px; height: 46px; top: 12%;  left: 8%;   opacity: .30; animation-duration: 21s; }
+.bokeh--2 { width: 22px; height: 22px; top: 26%;  left: 78%;  opacity: .40; animation-duration: 17s; animation-delay: -4s; }
+.bokeh--3 { width: 64px; height: 64px; top: 54%;  left: 68%;  opacity: .18; animation-duration: 25s; animation-delay: -9s; }
+.bokeh--4 { width: 30px; height: 30px; top: 68%;  left: 14%;  opacity: .28; animation-duration: 19s; animation-delay: -2s; }
+.bokeh--5 { width: 16px; height: 16px; top: 40%;  left: 40%;  opacity: .34; animation-duration: 23s; animation-delay: -12s; }
+.bokeh--6 { width: 52px; height: 52px; top: 84%;  left: 55%;  opacity: .16; animation-duration: 27s; animation-delay: -6s; }
+
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(14px, -22px, 0) scale(1.08); }
+}
+
+/* Soft, faceless shapes suggesting figures raising a glass. Deliberately
+   low-contrast and heavily blurred: no recognisable features. */
+.silhouettes {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 160%;
+  height: 46vh;
+  transform: translateX(-50%);
+  filter: blur(26px);
+  opacity: 0.5;
+  background:
+    radial-gradient(38% 52% at 16% 100%, rgba(0,0,0,0.92) 0%, transparent 72%),
+    radial-gradient(10% 13% at 16% 52%,  rgba(0,0,0,0.88) 0%, transparent 72%),
+    radial-gradient(34% 46% at 44% 100%, rgba(0,0,0,0.85) 0%, transparent 72%),
+    radial-gradient(9%  11% at 44% 58%,  rgba(0,0,0,0.82) 0%, transparent 72%),
+    radial-gradient(40% 56% at 80% 100%, rgba(0,0,0,0.90) 0%, transparent 72%),
+    radial-gradient(10% 13% at 80% 48%,  rgba(0,0,0,0.86) 0%, transparent 72%);
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 50% 40%, transparent 35%, rgba(5,3,2,0.72) 100%),
+    linear-gradient(180deg, rgba(5,3,2,0.42) 0%, transparent 28%, rgba(5,3,2,0.70) 100%);
+}
+
+/* -----------------------------------------------------------
+   Page
+   ----------------------------------------------------------- */
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+  padding:
+    clamp(3rem, 12vh, 5.5rem) 1.6rem
+    calc(3rem + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 clamp(2rem, 7vh, 3rem);
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+/* --- Title --- */
+.title {
+  margin: 0;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--champagne);
+}
+.title__line {
+  display: block;
+  font-size: clamp(1.9rem, 10vw, 2.6rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-indent: 0.11em; /* half the trailing letter-space, to re-centre */
+}
+.title__script {
+  display: block;
+  margin: 0.06em 0 0.02em;
+  font-family: var(--script);
+  font-size: clamp(4.4rem, 26vw, 6.4rem);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--amber-soft);
+  text-shadow: 0 0 36px rgba(214, 150, 74, 0.35);
+}
+.title__ord {
+  font-size: 0.40em;
+  vertical-align: 0.72em;
+  margin-left: 0.09em;
+}
+
+/* --- Let's Gather --- */
+.gather { margin: clamp(1.8rem, 6vh, 2.6rem) 0 0; }
+.gather__script {
+  display: block;
+  font-family: var(--script);
+  font-size: clamp(2.2rem, 12vw, 2.9rem);
+  line-height: 1.2;
+  color: var(--champagne);
+}
+.gather__sub {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-indent: 0.15em; /* half the trailing letter-space, to re-centre */
+}
+.heart { color: var(--amber-soft); }
+
+/* --- Divider --- */
+.rule {
+  width: 3.2rem;
+  height: 1px;
+  margin: clamp(2.2rem, 8vh, 3.2rem) auto;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  opacity: 0.75;
+}
+
+/* --- Event details --- */
+.when p { margin: 0; }
+.when__date {
+  font-size: clamp(1.15rem, 5.4vw, 1.35rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-indent: 0.1em; /* half the trailing letter-space, to re-centre */
+}
+.when__time {
+  margin-top: 0.5rem !important;
+  font-size: clamp(1.5rem, 7vw, 1.8rem);
+  letter-spacing: 0.14em;
+  color: var(--amber-soft);
+  text-indent: 0.07em; /* half the trailing letter-space, to re-centre */
+}
+.when__menu {
+  margin-top: 1.4rem !important;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 2;
+}
+
+/* -----------------------------------------------------------
+   RSVP form
+   ----------------------------------------------------------- */
+.rsvp__heading {
+  margin: -0.5rem 0 1.8rem;
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: clamp(2rem, 10vw, 2.5rem);
+  line-height: 1.2;
+  color: var(--champagne);
+}
+
+/* Honeypot — hidden from people, still reachable by bots */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.field { text-align: left; margin-bottom: 1.5rem; }
+.field__label {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.field__input {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--ink);
+  background: rgba(36, 22, 17, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  transition: border-color 0.25s var(--ease), background-color 0.25s var(--ease);
+}
+.field__input::placeholder { color: rgba(168, 146, 121, 0.55); }
+.field__input:hover { border-color: rgba(198, 138, 69, 0.45); }
+.field__input:focus {
+  outline: none;
+  border-color: var(--amber);
+  background: rgba(44, 27, 20, 0.7);
+}
+.field__input:focus-visible {
+  outline: 2px solid var(--amber-soft);
+  outline-offset: 2px;
+}
+
+/* --- Two large tap targets --- */
+.choices { margin: 0 0 1.75rem; padding: 0; border: 0; }
+.choices__legend {
+  padding: 0;
+  margin-bottom: 0.55rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;   /* own full-width line, independent of float quirks */
+  width: 100%;
+  text-align: left;
+}
+
+.choice { display: block; margin-top: 0.75rem; cursor: pointer; }
+.choice input {
+  position: absolute;
+  opacity: 0;
+  width: 1px; height: 1px;
+  margin: 0;
+}
+
+.choice__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 3.75rem;           /* comfortable thumb target */
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  background: rgba(26, 16, 11, 0.5);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  transition:
+    background-color 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease),
+    transform 0.2s var(--ease);
+}
+.choice__icon { font-size: 1.1rem; line-height: 1; opacity: 0.92; }
+.choice__text {
+  flex: 1;
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.choice__mark {
+  flex: none;
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .choice:hover .choice__inner { border-color: rgba(198, 138, 69, 0.5); }
+}
+.choice:active .choice__inner { transform: scale(0.99); }
+
+.choice input:focus-visible + .choice__inner {
+  outline: 2px solid var(--amber-soft);
+  outline-offset: 2px;
+}
+
+/* Selected state — clear but restrained */
+.choice input:checked + .choice__inner {
+  background: rgba(63, 39, 24, 0.72);
+  border-color: var(--amber);
+  box-shadow: inset 0 0 0 1px rgba(198, 138, 69, 0.35), 0 0 26px rgba(198, 138, 69, 0.14);
+}
+.choice input:checked + .choice__inner .choice__text { color: var(--champagne); }
+.choice input:checked + .choice__inner .choice__mark {
+  background: var(--amber-soft);
+  border-color: var(--amber-soft);
+  box-shadow: 0 0 10px rgba(224, 172, 107, 0.6);
+}
+
+/* --- Submit --- */
+.submit {
+  display: block;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 1rem;
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-indent: 0.15em; /* half the trailing letter-space, to re-centre */
+  color: #170D07;
+  background: linear-gradient(180deg, #D19B5F, #B57E3E);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: filter 0.25s var(--ease), transform 0.2s var(--ease), opacity 0.25s var(--ease);
+}
+@media (hover: hover) { .submit:hover { filter: brightness(1.08); } }
+.submit:active { transform: scale(0.99); }
+.submit:focus-visible { outline: 2px solid var(--champagne); outline-offset: 3px; }
+.submit[disabled] { opacity: 0.6; cursor: default; }
+
+.form-error {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: #E6A98C;
+}
+
+/* -----------------------------------------------------------
+   Confirmation
+   ----------------------------------------------------------- */
+.confirmation {
+  animation: rise 0.7s var(--ease) both;
+  outline: none;
+}
+.confirmation__icon {
+  margin: 0 0 1rem;
+  font-size: 2.4rem;
+  line-height: 1;
+}
+.confirmation__title {
+  margin: 0 0 1rem;
+  font-family: var(--script);
+  font-weight: 400;
+  /* The "No" message is long; keep it inside the gutters on a 390px phone. */
+  font-size: clamp(1.9rem, 9vw, 2.5rem);
+  line-height: 1.25;
+  overflow-wrap: break-word;
+  color: var(--amber-soft);
+  text-shadow: 0 0 34px rgba(214, 150, 74, 0.3);
+}
+.confirmation__body {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.confirmation__meta {
+  margin: 1.2rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-indent: 0.14em; /* half the trailing letter-space, to re-centre */
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.footer {
+  margin: clamp(3rem, 10vh, 4.5rem) 0 0;
+  font-size: 0.66rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(168, 146, 121, 0.8);   /* 4.6:1 on the background */
+  text-indent: 0.15em; /* half the trailing letter-space, to re-centre */
+}
+
+/* -----------------------------------------------------------
+   Larger screens — keep it intimate, just breathe more
+   ----------------------------------------------------------- */
+@media (min-width: 40em) {
+  body { font-size: 18px; }
+  .page { max-width: 32rem; }
+}
+
+/* -----------------------------------------------------------
+   Reduced motion
+   ----------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
